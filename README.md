@@ -1,4 +1,4 @@
-# WebViewUtil 张淞 向杰
+# WebViewUtil
 [![](https://jitpack.io/v/hannianfneg/WebViewUtil.svg)](https://jitpack.io/#hannianfneg/WebViewUtil)
 ```java
 allprojects {
