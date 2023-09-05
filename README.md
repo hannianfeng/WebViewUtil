@@ -8,5 +8,5 @@ allprojects {
 		}
 	}
 dependencies {
-	        implementation 'com.github.hannianfneg:WebViewUtil:1.0'
+	        implementation 'com.github.hannianfeng:WebViewUtil:1.0'
 	}
