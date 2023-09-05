@@ -2,4 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.webviewlib">
 
+    <application>
+        <activity
+            android:name=".H5MainActivity"
+            android:exported="true" />
+    </application>
+
 </manifest>

@@ -14,6 +14,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 31
+        minSdkVersion 31
     }
 
     buildTypes {
@@ -29,6 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    compileSdkVersion 31
 }
 
 dependencies {
