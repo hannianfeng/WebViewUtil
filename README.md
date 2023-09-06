@@ -21,7 +21,8 @@ api 'com.squareup.picasso:picasso:2.71828'
 api 'com.appsflyer:af-android-sdk:6.10.0'
 api "com.android.installreferrer:installreferrer:2.2"
 
-支持 ViewBinding
+# 支持 ViewBinding
+```java
 buildFeatures {
         viewBinding true
     }
