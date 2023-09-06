@@ -9,6 +9,7 @@ allprojects {
 dependencies {
 	        implementation 'com.github.hannianfeng:WebViewUtil:Tag'
 	}
+
 api 'com.airbnb.android:lottie:4.2.0'
 api 'io.github.youth5201314:banner:2.2.2'
 api 'com.github.bumptech.glide:glide:4.14.2'
@@ -19,3 +20,8 @@ api 'com.squareup.retrofit2:converter-gson:2.9.0'
 api 'com.squareup.picasso:picasso:2.71828'
 api 'com.appsflyer:af-android-sdk:6.10.0'
 api "com.android.installreferrer:installreferrer:2.2"
+
+支持 ViewBinding
+buildFeatures {
+        viewBinding true
+    }
