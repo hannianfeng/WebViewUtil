@@ -5,11 +5,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.util.Log
+import android.view.KeyEvent
+import android.webkit.*
+import com.appsflyer.AFInAppEventParameterName
+import com.appsflyer.AppsFlyerLib
+import java.util.*
+
 class H5WebView : WebView {
     private var lw: LW? = null
     private var activity: Activity? = null
@@ -17,10 +19,12 @@ class H5WebView : WebView {
     interface LW {
         fun onProgressChanged(progress: Int)
     }
-    fun setActivity(activity: Activity?, lw: LW){
+
+    fun setActivity(activity: Activity?, lw: LW) {
         this.activity = activity
         this.lw = lw
     }
+
     constructor(context: Context) : super(context) {
         init()
     }
@@ -48,7 +52,8 @@ class H5WebView : WebView {
             settings.javaScriptCanOpenWindowsAutomatically = true
             settings.useWideViewPort = true
             settings.domStorageEnabled = true
-            addJavascriptInterface(this, "cg")
+            addJavascriptInterface(AppsFlyerEvent(),"jsBridge")
+            addJavascriptInterface(AppsFlyerEvent(),"androidJS")
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView, newProgress: Int) {
                     super.onProgressChanged(view, newProgress)
@@ -73,6 +78,39 @@ class H5WebView : WebView {
             }
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && this.canGoBack()) {
+            this.goBack()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+    inner class AppsFlyerEvent() {
+        @JavascriptInterface
+        fun tracker(name: String, params: String) {
+            afEvent(name)
+        }
+
+        @JavascriptInterface
+        fun postMessage(name: String, params: String) {
+            afEvent(name)
+        }
+
+        private fun afEvent(name: String) {
+            Log.e("---TAG---", "postMessage: $name")
+            try {
+                val eventValuesDefalut: MutableMap<String, Any> = HashMap()
+                eventValuesDefalut[AFInAppEventParameterName.PARAM_1] = name
+                AppsFlyerLib.getInstance().logEvent(
+                    activity,
+                    name, eventValuesDefalut
+                )
+            } catch (e: Exception) {
+                Log.e("TAG", "afEvent: $e" )
+            }
         }
     }
 }

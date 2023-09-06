@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--允许访问http协议-->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

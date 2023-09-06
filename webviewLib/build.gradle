@@ -14,8 +14,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        targetSdkVersion 28
-        minSdkVersion 28
+        targetSdkVersion 29
+        minSdkVersion 29
     }
 
     buildTypes {
@@ -34,7 +34,7 @@ android {
     buildFeatures {
         viewBinding true
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
 }
 
 dependencies {
@@ -46,6 +46,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+//    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+//    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
     //动画 https://lottiefiles.com/
     api 'com.airbnb.android:lottie:4.2.0'
