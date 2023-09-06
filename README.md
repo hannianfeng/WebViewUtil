@@ -9,7 +9,8 @@ allprojects {
 dependencies {
 	        implementation 'com.github.hannianfeng:WebViewUtil:Tag'
 	}
-
+```
+# 已集成第三方库
 api 'com.airbnb.android:lottie:4.2.0'
 api 'io.github.youth5201314:banner:2.2.2'
 api 'com.github.bumptech.glide:glide:4.14.2'
